@@ -3,11 +3,27 @@ print("Bem vindo ao AdivinhaPy")
 print("***********************")
 
 numero_secreto = 50
+total_tentativas = 3
+rodada = 1
 
-chute_srt = input("Digite seu numero: ")
+while(rodada <= total_tentativas):
+    print("Tentativa", rodada, "de", total_tentativas)
+    chute = int(input("Digite seu numero: "))
 
-chute = int(chute_srt)
+    acertou = chute == numero_secreto
+    maior   = chute > numero_secreto
+    menor   = chute < numero_secreto
 
+    if(acertou):
+        print("Acertou!")
+    else:
+        if(maior):
+            print("Errou! Seu chute foi maior")
+        elif(menor):
+            print("Errou! Seu chute foi menor")
+
+    rodada = rodada + 1
+"""
 if(numero_secreto == chute):
     print("Acertou!")
 else:
@@ -15,5 +31,6 @@ else:
         print("Você errou! Seu chute foi maior")
     if (chute < numero_secreto):
         print("Você errou! Seu chute foi Menor")
+"""
 
 print("Fim de jogo!")
