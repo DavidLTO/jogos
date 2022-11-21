@@ -1,6 +1,9 @@
+nome_app = 'AdivinhaPy'
 print("***********************")
-print("Bem vindo ao AdivinhaPy")
+print("Bem vindo ao " + nome_app)
 print("***********************")
+
+#   range(start, stop, step)
 
 numero_secreto = 50
 total_tentativas = 3
