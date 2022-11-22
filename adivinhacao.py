@@ -1,40 +1,44 @@
-nome_app = 'AdivinhaPy'
-print("***********************")
-print("Bem vindo ao " + nome_app)
-print("***********************")
+import random
+def jogar():
+    print("************************")
+    print("Bem vindo ao Adivinhação")
+    print("************************")
 
-#   range(start, stop, step)
+    numero_secreto = random.randrange(1,101)
+    total_tentativas = 0
+    rodada = 1
 
-numero_secreto = 50
-total_tentativas = 3
-rodada = 1
+    print("Escolha o nível (1) Facil, (2) Medio, (3) Dificil")
+    nivel = int(input("Qual nível quer jogar?" ))
 
-while(rodada <= total_tentativas):
-    print("Tentativa {} de {}".format(rodada, total_tentativas))
-
-    chute = int(input("Digite seu numero: "))
-
-    acertou = chute == numero_secreto
-    maior   = chute > numero_secreto
-    menor   = chute < numero_secreto
-
-    if(acertou):
-        print("Acertou!")
+    if(nivel == 1):
+        total_tentativas = 10
+    elif(nivel == 2):
+        total_tentativas = 5
     else:
-        if(maior):
-            print("Errou! Seu chute foi maior")
-        elif(menor):
-            print("Errou! Seu chute foi menor")
+        total_tentativas = 3
 
-    rodada = rodada + 1
-"""
-if(numero_secreto == chute):
-    print("Acertou!")
-else:
-    if(chute > numero_secreto):
-        print("Você errou! Seu chute foi maior")
-    if (chute < numero_secreto):
-        print("Você errou! Seu chute foi Menor")
-"""
+    while(rodada <= total_tentativas):
+        print("Tentativa {} de {}".format(rodada, total_tentativas))
 
-print("Fim de jogo!")
+        chute = int(input("Digite seu numero: "))
+
+        acertou = chute == numero_secreto
+        maior = chute > numero_secreto
+        menor = chute < numero_secreto
+
+        if(acertou):
+            print("Acertou!")
+            break
+        else:
+            if(maior):
+                print("Errou! Seu chute foi maior")
+            elif(menor):
+                print("Errou! Seu chute foi menor")
+
+        rodada = rodada + 1
+
+    print("Fim de jogo!")
+
+if(__name__ == "__main__"):
+    jogar()
