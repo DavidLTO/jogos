@@ -3,30 +3,38 @@ def jogar():
     print("***Bem vindo ao Forca***")
     print("************************")
 
-    palavra_secreta = "banana"
+    palavra_secreta = "banana".upper()
     letras_corretas = ["_", "_", "_", "_", "_", "_"]
-    len_palavra = len(palavra_secreta)
-    print(len_palavra)
+
     enforcou = False
     acertou = False
+    erros = 0
 
     while(not enforcou and not acertou):
-
         chute = input("Qual letra? ")
-        chute = chute.strip()
+        chute = chute.strip().upper()
 
-        index = 0
-        #index = index.__add__()
-        for letra in palavra_secreta:
-            if(chute.upper() == letra.upper()):
-                letras_corretas[index] = letra
-                print("Encontrei a letra {} na posicao {}".format(chute, index))
+        if(chute in palavra_secreta):
+            index = 0
+            for letra in palavra_secreta:
+                if(chute == letra):
+                    letras_corretas[index] = letra
+                    print("Encontrei a letra {} na posicao {}".format(chute, index))
 
-            index = index + 1
+                index = index + 1
+        else:
+            erros = erros + 1
+
+        enforcou = erros == 6
+        acertou = "_" not in letras_corretas
 
         print(letras_corretas)
+    if(acertou):
+        print("Você ganhou!")
+    else:
+        print("Você perdeu!")
 
-    print("Fim de jogo!")
+    print("*** Fim de jogo! ***")
 
 if(__name__ == "__main__"):
     jogar()
